@@ -17,6 +17,8 @@ services:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     environment:
 #      - DATABASE_URL=postgres://admin:1Qazxsw@@db:5432/postgres
       - POSTGRES_NAME=postgres
