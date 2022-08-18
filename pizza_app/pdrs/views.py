@@ -1,3 +1,22 @@
-from django.shortcuts import render
 
-# Create your views here.
+from .models import Ingredient
+from django.shortcuts import render
+from .forms import IngredientForm
+
+
+def ingredient_list(request, template_name = 'pdrs/IngredientViews.html'):
+
+    form = IngredientForm(request.POST or None, initial={
+        'dough': False,
+        'sauce': True
+    })
+
+    ingredient_list = Ingredient.objects.all()
+
+    if form.is_valid():
+        form.save()
+
+    data = {'form': form,
+               'ingredient_list': ingredient_list}
+    return render(request, template_name, data)
+

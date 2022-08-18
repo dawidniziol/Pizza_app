@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import dj_database_url
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
@@ -41,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pdrs.apps.PdrsConfig',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -71,12 +74,13 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'pizza_app.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-print(dj_database_url.config())
+
 DATABASES = {"default": dj_database_url.config()}
 
 
@@ -104,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Warsaw'
 
 USE_I18N = True
 
