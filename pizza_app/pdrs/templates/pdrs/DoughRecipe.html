@@ -1,0 +1,42 @@
+{% extends 'pdrs/base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <h1>Dough list</h1>
+
+    <h2>Add new dough:</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add" />
+    </form>
+
+
+    <table style="width:25%" border="1px solid black">
+                <tr>
+                    <th>Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                {% for dough in doughrecipe_list %}
+                <tr>
+                    <td style="width:25%">{{dough.name}}</td>
+                    <td style="width:5%">Edit</td>
+                    <td style="width:5%">Delete</td>
+                </tr>
+                {% endfor %}
+    </table>
+
+</body>
+{% endblock %}
+
+{% block extrastyle %}
+<style>
+</style>
+{% endblock %}
+
+{% block extras %}
+<script>
+</script>
+{% endblock %}

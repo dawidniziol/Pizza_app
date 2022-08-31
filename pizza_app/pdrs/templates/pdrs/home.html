@@ -3,7 +3,13 @@
 
 {% block content %}
 <body>
-  <a href="{% url 'pdrs:ingredient_list' %}" >Ingredient List</a>
+  <p>
+    <a href="{% url 'pdrs:ingredient_list' %}" >Ingredient List</a>
+  </p>
+  <p>
+    <a href="{% url 'pdrs:doughrecipe_list' %}" >Dough</a>
+  </p>
+
 </body>
 {% endblock %}
 

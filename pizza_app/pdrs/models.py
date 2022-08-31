@@ -17,13 +17,13 @@ class Ingredient(models.Model):
 
     @property
     def dough_bool(self):
-        if self.pizza:
+        if self.dough:
             return "Yes"
         return "No"
 
     @property
     def sauce_bool(self):
-        if self.pizza:
+        if self.sauce:
             return "Yes"
         return "No"
 
