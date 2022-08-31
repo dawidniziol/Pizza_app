@@ -1,26 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% extends 'pdrs/base.html' %}
+{% load static %}
+
+{% block content %}
 <body>
-    <ul>
-        {% for ingredient in ingredient_list %}
-        <li>
-            {{ ingredient.name }}
-        </li>
-        {% endfor %}
-    </ul>
+    <h1>Ingredient list</h1>
 
+            <table style="width:25%" border="1px solid black">
+                <tr>
+                    <th>Ingredient name</th>
+                    <th>Dough</th>
+                    <th>Sauce</th>
+                    <th>Pizza</th>
+                </tr>
+                {% for ingredient in ingredient_list %}
+                <tr>
+                    <td style="width:25%">{{ingredient.name}}</td>
+                    <td style="width:5%">{{ingredient.dough_bool}}</td>
+                    <td style="width:5%">{{ingredient.sauce_bool}}</td>
+                    <td style="width:5%">{{ingredient.pizza_bool}}</td>
+                </tr>
+                {% endfor %}
+            </table>
 
-
+    <h2>Add new ingredient:</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Add" />
     </form>
 
-
 </body>
-</html>
+{% endblock %}
+
+{% block extrastyle %}
+<style>
+</style>
+{% endblock %}
+
+{% block extras %}
+<script>
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'pdrs/base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+  <a href="{% url 'pdrs:ingredient_list' %}" >Ingredient List</a>
+</body>
+{% endblock %}
+
+{% block extrastyle %}
+<style>
+a {
+  font-size: 2rem;
+}
+</style>
+{% endblock %}
+
+{% block extras %}
+<script>
+</script>
+{% endblock %}
