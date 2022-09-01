@@ -37,7 +37,6 @@ class Ingredient(models.Model):
 class Recipe(models.Model):
 
     TYPE_CHOICES = (
-        ("Pizza", "Pizza"),
         ("Sauce", "Sauce"),
         ("Dough", "Dough")
     )

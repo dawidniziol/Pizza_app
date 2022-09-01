@@ -1,0 +1,30 @@
+{% extends 'pdrs/base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <h1>Recipe list</h1>
+
+    <h2>Add new recipe:</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add" />
+    </form>
+
+    <p>
+        <a href="{% url 'pdrs:home_page' %}" >Home Page</a>
+    </p>
+
+</body>
+{% endblock %}
+
+{% block extrastyle %}
+<style>
+</style>
+{% endblock %}
+
+{% block extras %}
+<script>
+</script>
+{% endblock %}

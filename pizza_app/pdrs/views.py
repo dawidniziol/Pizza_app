@@ -32,34 +32,29 @@ def Recipe_list(request, template_name='pdrs/Recipe.html'):
 
     Recipe_list = Recipe.objects.all()
 
-    # ingredient_dict={
-    #     "Dough": [True, False, False],
-    #     "Sauce": [False, True, False],
-    #     "Pizza": [False, False, True],
-    #
-    # }
+    dough_list = Recipe.objects.filter(type="Dough")
+    sauce_list = Recipe.objects.filter(type="Sauce")
+    zip_list = zip(dough_list, sauce_list)
 
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-            # ingredient_choice=form.cleaned_data["type"]
-            # Recipe.objects.create(
-            #     name=form.cleaned_data["name"],
-            #     dough= ingredient_dict[ingredient_choice][0],
-            #     sauce= ingredient_dict[ingredient_choice][1],
-            #     pizza= ingredient_dict[ingredient_choice][2]
-            # )
 
-    data = {'form': form, 'Recipe_list': Recipe_list}
+    data = {'form': form, 'Recipe_list': Recipe_list, 'dough_list': dough_list, 'sauce_list': sauce_list, 'zip_list': zip_list}
     return render(request, template_name, data)
 
 
-def doughedit_details(request, id, template_name='DoughEdit.html'):
+def doughedit_details(request, id, template_name='pdrs/RecipeEdit.html'):
 
-    Recipe = Recipe.object.get(id=id)
+    form = RecipeIngredientForm(request.POST or None)
 
+    recipe = Recipe.objects.get(id=id)
 
-    data = {'form': form, 'doughedit': doughedit}
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+
+    data = {'form': form, 'recipe': recipe}
     return render(request, template_name, data)
 
 
