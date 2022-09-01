@@ -34,18 +34,28 @@ class Ingredient(models.Model):
         return "No"
 
 
-class DoughRecipe(models.Model):
+class Recipe(models.Model):
+
+    TYPE_CHOICES = (
+        ("Pizza", "Pizza"),
+        ("Sauce", "Sauce"),
+        ("Dough", "Dough")
+    )
 
     name = models.CharField(max_length=255)
+    type = models.CharField(choices=TYPE_CHOICES, max_length=255)
 
     def __str__(self):
         return self.name
 
 
-class IngredientDough(models.Model):
+
+
+class RecipeIngredient(models.Model):
 
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, blank=True)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     weight = models.IntegerField()
-    dough = models.ForeignKey(DoughRecipe, on_delete=models.CASCADE)
+
 
 

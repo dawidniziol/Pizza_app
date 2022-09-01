@@ -1,7 +1,7 @@
 
-from .models import Ingredient, DoughRecipe, IngredientDough
+from .models import Ingredient, Recipe, RecipeIngredient
 from django.shortcuts import render
-from .forms import IngredientForm, DoughRecipeForm, IngredientDoughForm
+from .forms import IngredientForm, RecipeForm, RecipeIngredientForm
 
 
 def home_page(request, template_name='pdrs/home.html'):
@@ -26,22 +26,37 @@ def ingredient_list(request, template_name='pdrs/IngredientViews.html'):
     return render(request, template_name, data)
 
 
-def doughrecipe_list(request, template_name='pdrs/DoughRecipe.html'):
+def Recipe_list(request, template_name='pdrs/Recipe.html'):
 
-    form = DoughRecipeForm(request.POST or None)
+    form = RecipeForm(request.POST or None)
 
-    doughrecipe_list = DoughRecipe.objects.all()
+    Recipe_list = Recipe.objects.all()
 
-    if form.is_valid():
-        form.save()
+    # ingredient_dict={
+    #     "Dough": [True, False, False],
+    #     "Sauce": [False, True, False],
+    #     "Pizza": [False, False, True],
+    #
+    # }
 
-    data = {'form': form, 'doughrecipe_list': doughrecipe_list}
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            # ingredient_choice=form.cleaned_data["type"]
+            # Recipe.objects.create(
+            #     name=form.cleaned_data["name"],
+            #     dough= ingredient_dict[ingredient_choice][0],
+            #     sauce= ingredient_dict[ingredient_choice][1],
+            #     pizza= ingredient_dict[ingredient_choice][2]
+            # )
+
+    data = {'form': form, 'Recipe_list': Recipe_list}
     return render(request, template_name, data)
 
 
 def doughedit_details(request, id, template_name='DoughEdit.html'):
 
-    id = DoughRecipe.object.get(id=pk)
+    Recipe = Recipe.object.get(id=id)
 
 
     data = {'form': form, 'doughedit': doughedit}

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Ingredient, DoughRecipe, IngredientDough
+from .models import Ingredient, Recipe, RecipeIngredient
 
 
 class IngredientForm(forms.ModelForm):
@@ -9,16 +9,28 @@ class IngredientForm(forms.ModelForm):
         fields = '__all__'
 
 
-class DoughRecipeForm(forms.ModelForm):
+class RecipeForm(forms.ModelForm):
 
     class Meta:
-        model = DoughRecipe
+        model = Recipe
         fields = '__all__'
 
+# DOUGH_CHOICES = (
+#     ("Pizza", "Pizza"),
+#     ("Sauce", "Sauce"),
+#     ("Dough", "Dough")
+# )
+#
+#
+# class RecipeForm(forms.Form):
+#
+#     name = forms.CharField(label="Name")
+#     type = forms.ChoiceField(label="Type", choices=DOUGH_CHOICES)
 
-class IngredientDoughForm(forms.ModelForm):
+
+class RecipeIngredientForm(forms.ModelForm):
 
     class Meta:
-        model = IngredientDough
+        model = RecipeIngredient
         fields = '__all__'
 

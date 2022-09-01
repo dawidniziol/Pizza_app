@@ -2,8 +2,8 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Ingredient, DoughRecipe, IngredientDough
+from .models import Ingredient, Recipe, RecipeIngredient
 
 admin.site.register(Ingredient)
-admin.site.register(DoughRecipe)
-admin.site.register(IngredientDough)
+admin.site.register(Recipe)
+admin.site.register(RecipeIngredient)
