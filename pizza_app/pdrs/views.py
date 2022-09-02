@@ -34,13 +34,12 @@ def Recipe_list(request, template_name='pdrs/Recipe.html'):
 
     dough_list = Recipe.objects.filter(type="Dough")
     sauce_list = Recipe.objects.filter(type="Sauce")
-    zip_list = zip(dough_list, sauce_list)
 
     if request.method == 'POST':
         if form.is_valid():
             form.save()
 
-    data = {'form': form, 'Recipe_list': Recipe_list, 'dough_list': dough_list, 'sauce_list': sauce_list, 'zip_list': zip_list}
+    data = {'form': form, 'Recipe_list': Recipe_list, 'dough_list': dough_list, 'sauce_list': sauce_list, 'dict_list':dict_list}
     return render(request, template_name, data)
 
 

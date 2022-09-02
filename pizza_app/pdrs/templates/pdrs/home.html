@@ -3,15 +3,14 @@
 
 {% block content %}
 <body>
-  <h1>
+  <div class="text-center">
+    <h1>
     Welcome in PDRS - Pizza Dough Recipe Saver
-  </h1>
-  <p>
-    <a href="{% url 'pdrs:ingredient_list' %}" >Ingredient List</a>
-  </p>
-  <p>
-    <a href="{% url 'pdrs:Recipe_list' %}" >Recipe</a>
-  </p>
+    </h1>
+
+    <a class="btn btn-primary btn-lg mb-3" href="{% url 'pdrs:ingredient_list' %}" >Ingredient List</a> <br/>
+    <a class="btn btn-primary btn-lg" href="{% url 'pdrs:Recipe_list' %}" >Recipe</a>
+  </div>
 
 </body>
 {% endblock %}

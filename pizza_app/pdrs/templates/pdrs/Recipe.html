@@ -14,31 +14,35 @@
 
     <table>
         <tr>
-            <td><table border="1px solid black">
-                <tr>
-                    <th>Dough recipe</th>
-                </tr>
-                {% for dough in dough_list %}
-                <tr>
-                    <td>{{dough.id}}</td>
-                    <td><a href="{% url 'pdrs:recipeedit_details' dough.id %}" >{{dough.name}}</a></td>
-                    <td>edit</td>
-                </tr>
-                {% endfor %}
+            <td>
+                <table border="1px solid black">
+                    <tr>
+                        <th>Dough recipe</th>
+                    </tr>
+                    {% for dough in dough_list %}
+                    <tr>
+                        <td>{{dough.id}}</td>
+                        <td><a href="{% url 'pdrs:recipeedit_details' dough.id %}" >{{dough.name}}</a></td>
+                        <td>edit</td>
+                    </tr>
+                    {% endfor %}
 
-    </table></td>
-            <td><table border="1px solid black">
-                <tr>
-                    <th>Sauce recipe</th>
-                </tr>
-                {% for sauce in sauce_list %}
-                <tr>
-                    <td>{{sauce.id}}</td>
-                    <td><a href="{% url 'pdrs:recipeedit_details' sauce.id %}" >{{sauce.name}}</a></td>
-                    <td>edit</td>
-                </tr>
-                {% endfor %}
-            </table></td>
+                </table>
+            </td>
+            <td>
+                <table border="1px solid black">
+                    <tr>
+                        <th>Sauce recipe</th>
+                    </tr>
+                    {% for sauce in sauce_list %}
+                    <tr>
+                        <td>{{sauce.id}}</td>
+                        <td><a href="{% url 'pdrs:recipeedit_details' sauce.id %}" >{{sauce.name}}</a></td>
+                        <td>edit</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </td>
         </tr>
     </table>
 
