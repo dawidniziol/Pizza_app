@@ -12,7 +12,29 @@
         <input class="btn btn-dark" type="submit" value="Add" />
     </form>
 
+    <div class="row">
+        <div class="col-2">
+            <table class="table table-bordered table-striped table-hover">
+                <tr>
+                    <th colspan="3">{{recipe}}</th>
+                </tr>
+                <tr>
+                    <td>Ingredient</td>
+                    <td>Weight[grams]</td>
+                </tr>
+                {% for rec_ing in recipe_ingredient %}
+                <tr>
+                    <td>{{rec_ing.ingredient}}</td>
+                    <td>{{rec_ing.weight}}</td>
+                    <td>edit</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
     <p>
+        <a class="btn btn-primary btn-sm" href="{% url 'pdrs:Recipe_list' %}" >Back to recipe list</a>
         <a class="btn btn-primary btn-sm" href="{% url 'pdrs:home_page' %}" >Home Page</a>
     </p>
 

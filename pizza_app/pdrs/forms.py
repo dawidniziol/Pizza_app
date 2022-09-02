@@ -28,9 +28,16 @@ class RecipeForm(forms.ModelForm):
 #     type = forms.ChoiceField(label="Type", choices=DOUGH_CHOICES)
 
 
-class RecipeIngredientForm(forms.ModelForm):
+# class RecipeIngredientForm(forms.ModelForm):
 
-    class Meta:
-        model = RecipeIngredient
-        fields = '__all__'
+    # class Meta:
+    #     model = RecipeIngredient
+    #     fields = '__all__'
+
+class RecipeIngredientForm(forms.Form):
+
+    ingredient = forms.ModelChoiceField(label="Ingredient", queryset=Ingredient.objects.all())
+    weight = forms.IntegerField(label='weight')
+
+
 
