@@ -11,36 +11,34 @@
         {{ form.as_p }}
         <input type="submit" value="Add" />
     </form>
-
-    <table>
-        <tr>
-            <td><table border="1px solid black">
-                <tr>
-                    <th>Dough recipe</th>
-                </tr>
-                {% for dough in dough_list %}
-                <tr>
-                    <td>{{dough.id}}</td>
-                    <td><a href="{% url 'pdrs:recipeedit_details' dough.id %}" >{{dough.name}}</a></td>
-                    <td>edit</td>
-                </tr>
-                {% endfor %}
-
-    </table></td>
-            <td><table border="1px solid black">
-                <tr>
-                    <th>Sauce recipe</th>
-                </tr>
-                {% for sauce in sauce_list %}
-                <tr>
-                    <td>{{sauce.id}}</td>
-                    <td><a href="{% url 'pdrs:recipeedit_details' sauce.id %}" >{{sauce.name}}</a></td>
-                    <td>edit</td>
-                </tr>
-                {% endfor %}
-            </table></td>
-        </tr>
-    </table>
+        <div class="row">
+            <div class="col-2">
+                <table class="table table-bordered table-striped table-hover">
+                    <tr>
+                        <th colspan="3">Dough recipe</th>
+                    </tr>
+                    {% for dough in dough_list %}
+                    <tr>
+                        <td width="10%">{{dough.id}}</td>
+                        <td><a href="{% url 'pdrs:recipe_edit_details' dough.id %}" >{{dough.name}}</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-2">
+                <table class="table table-bordered table-striped table-hover">
+                    <tr>
+                        <th colspan="3">Sauce recipe</th>
+                    </tr>
+                    {% for sauce in sauce_list %}
+                    <tr>
+                        <td width="10%">{{sauce.id}}</td>
+                        <td><a href="{% url 'pdrs:recipe_edit_details' sauce.id %}" >{{sauce.name}}</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
 
     <p>
         <a href="{% url 'pdrs:home_page' %}" >Home Page</a>
